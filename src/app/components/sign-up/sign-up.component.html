@@ -1,0 +1,46 @@
+<section id="signUp" class="w-100 h-100">
+
+    <form [formGroup]='signUpForm' (ngSubmit)=' signUpForm.valid && userData(signUpForm)'>
+        <div class="form container">
+            <div class="w-50 m-auto">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input [class.is-valid]='signUpForm.controls.first_name.errors == null' type="text" formControlName='first_name' placeholder="Enter First Name" class="form-control my-2">
+                        <div *ngIf='signUpForm.controls.first_name.errors && signUpForm.controls.first_name.touched ' class="alert alert-danger my-2" role="alert">
+                            first name is invalid
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input [class.is-valid]='signUpForm.controls.last_name.errors == null' type="text" placeholder="Enter last Name" formControlName='last_name' class="form-control my-2">
+                        <div *ngIf='signUpForm.controls.last_name.errors && signUpForm.controls.last_name.touched ' class="alert alert-danger my-2" role="alert">
+                            last name is invalid
+                        </div>
+                    </div>
+                </div>
+                <input [class.is-valid]='signUpForm.controls.email.errors == null' type="email" placeholder="Enter Your Email" formControlName='email' class="form-control my-3">
+                <div *ngIf='signUpForm.controls.email.errors && signUpForm.controls.email.touched ' class="alert alert-danger my-2" role="alert">
+                    email is invalid
+                </div>
+                <input type="number" [class.is-valid]='signUpForm.controls.age.errors == null' placeholder="Enter Your Age" formControlName='age' class="form-control my-3">
+                <div *ngIf='signUpForm.controls.age.errors && signUpForm.controls.age.touched ' class="alert alert-danger my-2" role="alert">
+                    this is invalid age
+                </div>
+                <input type="password" [class.is-valid]='signUpForm.controls.password.errors == null' placeholder="Enter Password" formControlName='password' class="form-control my-3">
+                <div *ngIf='signUpForm.controls.password.errors && signUpForm.controls.password.touched ' class="alert alert-danger my-2" role="alert">
+                    this is invalid password
+                </div>
+                <button [disabled]='signUpForm.invalid' class="btn btn-secondary w-100">
+                <span *ngIf='!isClicked'>sign up</span> <span *ngIf='isClicked'>wating......</span>
+                </button>
+                <div *ngIf='isSuccess' class="alert alert-primary my-2 text-center text-info">
+                    {{successMessage}}
+                </div>
+                <div *ngIf=' NotSuccessAlert' class="alert alert-warning my-2 text-center text-danger">
+                    {{NotSuccessMessage}}
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</section>

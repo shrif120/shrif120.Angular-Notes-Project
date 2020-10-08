@@ -1,0 +1,23 @@
+<section id="signIn" class="w-100 h-100">
+
+    <form [formGroup]='signInForm' (ngSubmit)=' signInForm.valid && signInData() '>
+        <div class="form container">
+            <div class="w-50 m-auto">
+
+                <input [class.is-valid]='signInForm.get("email").errors == null' formControlName='email' type="email" placeholder="Enter Your Email" class="form-control my-3">
+                <div *ngIf='signInForm.get("email").errors && signInForm.get("email").touched' class="alert alert-danger my-2" role="alert">
+                    this is invalid email
+                </div>
+                <input [class.is-valid]='signInForm.get("password").errors == null' formControlName='password' type="password" placeholder="Enter Password" class="form-control my-3">
+                <div *ngIf='signInForm.get("password").errors && signInForm.get("password").touched' class="alert alert-danger my-2" role="alert">
+                    this is invalid password
+                </div>
+                <button [disabled]='signInForm.invalid' class="btn btn-secondary w-100">
+                       sign In
+                </button>
+            </div>
+
+        </div>
+    </form>
+
+</section>
